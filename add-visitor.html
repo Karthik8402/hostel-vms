@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Visitor</title>
+  <!-- Tailwind CSS -->
+  <script src="libs/tailwind.js"></script>
+
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="libs/sweetalert2.min.css">
+  <script src="libs/sweetalert2.all.min.js"></script>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="libs/aos/aos.css">
+  <script src="libs/aos/aos.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 p-4">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center" data-aos="fade-left" data-aos-delay="100">
+          <a href="index.html" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition">
+            🏨 Hostel VMS
+          </a>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="md:hidden">
+          <button id="menuToggle" class="text-gray-700 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Links -->
+        <ul class="hidden md:flex space-x-3 text-sm font-medium items-center transition-all duration-300 ease-in-out">
+          <li data-aos="fade-right" data-aos-delay="100">
+            <a href="index.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
+              Home
+            </a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="200">
+            <a href="rules.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
+              Rules
+            </a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="300">
+            <a href="login.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
+              Warden Login
+            </a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="400">
+            <a href="add-visitor.html"
+              class="px-4 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700 transition scale-105 font-bold">
+              Add Visitor
+            </a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="500">
+            <a href="log.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
+              Visitor Log
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile Menu -->
+      <ul id="mobileMenu" class="md:hidden hidden flex-col space-y-2 pb-4 text-sm font-medium">
+        <li><a href="index.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Home</a>
+        </li>
+        <li><a href="rules.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Rules</a></li>
+        <li><a href="login.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Warden Login</a></li>
+        <li><a href="add-visitor.html" class="block px-4 py-2 bg-blue-600 text-white rounded-full shadow font-bold">Add
+            Visitor</a></li>
+        <li><a href="log.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Visitor Log</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="flex-grow flex justify-center items-center mb-6 px-5 pt-24">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg" data-aos="zoom-in">
+      <h2 class="text-3xl font-bold text-center text-blue-700 mb-6">Add Visitor</h2>
+
+      <form id="registrationForm" class="form-card max-w-md mx-auto p-6 rounded-lg shadow-md bg-white text-gray-800"
+        enctype="multipart/form-data">
+
+        <!-- Full Name Input -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="fullName" class="block text-gray-700 mb-2">Full Name</label>
+          <input type="text" id="fullName" placeholder="John Doe" required class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <!-- Email Input -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="email" class="block text-gray-700 mb-2">Email</label>
+          <input type="email" id="email" placeholder="john@example.com" required
+            class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <!-- Phone Input -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="phone" class="block text-gray-700 mb-2">Phone</label>
+          <input type="tel" id="phone" placeholder="123-456-7890" required class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <!-- Purpose Input -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="purpose" class="block text-gray-700 mb-2">Purpose of Visit</label>
+          <input type="text" id="purpose" placeholder="Meeting, Delivery, etc." required
+            class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <!-- Photo Upload -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="photo" class="block text-gray-700 mb-2">Upload Photo (PNG/JPG Only)</label>
+          <input type="file" id="photo" accept="image/png, image/jpg, image/jpeg" required
+            class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <!-- CAPTCHA Section -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="captchaInput" class="block text-sm font-medium text-gray-700">CAPTCHA: </label>
+          <span id="captchaQuestion" class="block text-sm font-medium text-gray-700">Loading CAPTCHA...</span>
+          <input type="number" id="captchaInput" required class="w-full border rounded px-3 py-2" />
+        </div>
+
+        <!-- Rule Link Section -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <a href="rules.html" class="text-blue-600 hover:text-blue-800 transition">
+            View Rules
+          </a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition"
+          data-aos="fade-up" data-aos-delay="200">
+          Add Visitor
+        </button>
+      </form>
+
+      <div id="resultArea" class="text-center mt-4"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-10 py-4 text-center text-sm text-gray-500">
+    © 2025 Hostel Visitor Management System. All rights reserved.
+  </footer>
+
+  <script>
+    AOS.init();
+
+    let captchaAnswer = 0;
+    // ✅ Generate Visitor ID using localStorage
+    let visitorID = localStorage.getItem("visitorID");
+    if (!visitorID) {
+      visitorID = 2608; // Starting number
+    }
+    visitorID = parseInt(visitorID) + 1;
+    localStorage.setItem("visitorID", visitorID);
+
+    // Generate random math CAPTCHA
+    function generateCaptcha() {
+      const num1 = Math.floor(Math.random() * 10) + 1; // 1–10
+      const num2 = Math.floor(Math.random() * 10) + 1;
+      captchaAnswer = num1 + num2;
+      document.getElementById('captchaQuestion').textContent = `What is ${num1} + ${num2}?`;
+    }
+
+    // Call this when the page loads
+    generateCaptcha();
+
+    // Mobile menu toggle functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden'); // Toggle visibility of mobile menu
+    });
+
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const userCaptcha = parseInt(document.getElementById('captchaInput').value);
+      if (userCaptcha !== captchaAnswer) {
+        alert("Incorrect CAPTCHA answer. Please try again.");
+        generateCaptcha(); // Regenerate a new one
+        return;
+      }
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const purpose = document.getElementById('purpose').value.trim();
+      const dateTime = new Date().toLocaleString();
+      const photoFile = document.getElementById('photo').files[0];
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const photoDataURL = e.target.result;
+
+        // Generate Visitor ID and store it in localStorage
+        const generatedVisitorID = visitorID++;
+        localStorage.setItem('visitorID', visitorID); // Store updated ID in localStorage
+
+        // Open new print window
+        const printWindow = window.open('', '_blank');
+        const html = `
+      <html>
+      <head>
+        <title>Visitor Details</title>
+        <style>
+          body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8fafc;
+          }
+          .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+          }
+          .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+          }
+          .btn-print {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <img src="${photoDataURL}" class="photo" alt="Visitor Photo" />
+          <h2>Visitor ID: ${generatedVisitorID}</h2>
+          <h2>${fullName}</h2>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Purpose:</strong> ${purpose}</p>
+          <p><strong>Date & Time:</strong> ${dateTime}</p>
+          <button class="btn-print" onclick="window.print()">Print</button>
+        </div>
+      </body>
+      </html>
+    `;
+
+        printWindow.document.write(html);
+        printWindow.document.close();
+      };
+
+      // Validate if the photo is PNG or JPG
+      if (photoFile && (photoFile.type === 'image/png' || photoFile.type === 'image/jpeg' || photoFile.type === 'image/jpg')) {
+        reader.readAsDataURL(photoFile);
+      } else {
+        alert("Please upload a valid PNG or JPG image.");
+      }
+
+      // Optional: also send to Google Sheets
+      fetch('https://script.google.com/macros/s/AKfycbxdiCVcSkx1ZnyEnTtNh6biL9yCj4ffC_SlJWmjc73I0_Iywxqws_6WCkyCrj_uXdRy8w/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          visitorID,
+          fullName,
+          email,
+          phone,
+          purpose,
+          dateTime
+        })
+      });
+
+      document.getElementById('resultArea').innerHTML = `<p class="text-green-600 font-semibold">Visitor data added ✅</p>`;
+      document.getElementById('registrationForm').reset();
+      generateCaptcha(); // Refresh CAPTCHA after submission
+    });
+
+  </script>
+</body>
+
+</html>
