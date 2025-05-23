@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hostel Visitor Management System</title>
+  <title>Vizito</title>
   <link rel="icon" href="./libs/images/logo.jpg" type="image/jpg">
 
   <!-- Tailwind CSS -->
@@ -79,7 +78,7 @@
       <div class="flex justify-between items-center py-4">
         <div class="flex items-center" data-aos="fade-left" data-aos-delay="100">
           <a href="index.html" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition">
-            🏨 Hostel VMS
+            🏨 Vizito
           </a>
         </div>
 
@@ -148,7 +147,7 @@
     <!-- Hero Section -->
     <section class="pt-32 pb-20 px-6 text-center" data-aos="fade-down" data-aos-delay="150">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-4xl font-bold text-blue-700 mb-2 drop-shadow-lg">Welcome to Hostel Visitor Management System</h2>
+        <h2 class="text-4xl font-bold text-blue-700 mb-2 drop-shadow-lg">Welcome to Vizito Hostel</h2>
         <p class="text-grey text-lg mb-6 drop-shadow-md">
           A simple and secure way to manage hostel visitors, logs, and registrations.
         </p>
@@ -179,7 +178,7 @@
 
   <!-- Footer -->
   <footer class="border-t py-4 text-center text-sm text-gray-700">
-    © 2025 Hostel Visitor Management System. All rights reserved.
+    © 2025 Vizito Company. All rights reserved.
   </footer>
 
   <script>
@@ -198,159 +197,4 @@
 </body>
 
 </html>
-=======
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hostel Visitor Management System</title>
-   <!-- Tailwind CSS -->
-   <script src="libs/tailwind.js"></script>
-
-   <!-- SweetAlert2 -->
-   <link rel="stylesheet" href="libs/sweetalert2.min.css">
-   <script src="libs/sweetalert2.all.min.js"></script>
- 
-   <!-- AOS -->
-   <link rel="stylesheet" href="libs/aos/aos.css">
-   <script src="libs/aos/aos.js"></script>
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
-</head>
-
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
-
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        <div class="flex items-center" data-aos="fade-left" data-aos-delay="100">
-          <a href="index.html" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition">
-            🏨 Hostel VMS
-          </a>
-        </div>
-
-        <!-- Hamburger -->
-        <div class="md:hidden">
-          <button id="menuToggle" class="text-gray-700 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Links -->
-        <ul class="hidden md:flex space-x-3 text-sm font-medium items-center transition-all duration-300 ease-in-out">
-          <li data-aos="fade-right" data-aos-delay="100">
-            <a href="index.html"
-              class="px-4 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700 transition scale-105 font-bold">
-              Home
-            </a>
-          </li>
-          <li data-aos="fade-right" data-aos-delay="200">
-            <a href="rules.html"
-              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
-              Rules
-            </a>
-          </li>
-          <li data-aos="fade-right" data-aos-delay="300">
-            <a href="login.html"
-              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
-              Warden Login
-            </a>
-          </li>
-          <li data-aos="fade-right" data-aos-delay="400">
-            <a href="add-visitor.html"
-              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
-              Add Visitor
-            </a>
-          </li>
-          <li data-aos="fade-right" data-aos-delay="500">
-            <a href="log.html"
-              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300">
-              Visitor Log
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Mobile Menu -->
-      <ul id="mobileMenu" class="md:hidden hidden flex-col space-y-2 pb-4 text-sm font-medium">
-        <li><a href="index.html" class="block px-4 py-2 bg-blue-600 text-white rounded-full shadow font-bold">Home</a>
-        </li>
-        <li><a href="rules.html"
-            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Rules</a></li>
-        <li><a href="login.html"
-            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Warden Login</a></li>
-        <li><a href="add-visitor.html"
-            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Add Visitor</a></li>
-        <li><a href="log.html"
-            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Visitor Log</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main class="flex-grow">
-    <!-- Hero Section -->
-    <section class="pt-28 pb-16 px-6 text-center bg-gradient-to-br from-blue-100 to-white" data-aos="fade-down"
-      data-aos-delay="150">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-4xl font-bold text-blue-700 mb-4">Welcome to Hostel Visitor Management System</h2>
-        <p class="text-gray-600 text-lg mb-6">
-          A simple and secure way to manage hostel visitors, logs, and registrations.
-        </p>
-        <a href="rules.html"
-          class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition hover:scale-105 shadow-md">
-          Add Visitor
-        </a>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="150">
-      <div class="bg-white p-6 shadow rounded-lg hover:shadow-xl hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-blue-600 mb-2">📋 Visitor Register</h3>
-        <p class="text-gray-600">Quick and easy visitor registration with essential details.</p>
-      </div>
-      <div class="bg-white p-6 shadow rounded-lg hover:shadow-xl hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-blue-600 mb-2">👮 Warden Access</h3>
-        <p class="text-gray-600">Secure warden login to manage visitors and logs.</p>
-      </div>
-      <div class="bg-white p-6 shadow rounded-lg hover:shadow-xl hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-blue-600 mb-2">🖨️ Print Receipt</h3>
-        <p class="text-gray-600">Instant printable receipt for each visitor entry.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-white border-t mt-10 py-4 text-center text-sm text-gray-500">
-    © 2025 Hostel Visitor Management System. All rights reserved.
-  </footer>
-
-  <script>
-    AOS.init();
-  </script>
-
-  <!-- JS for mobile toggle -->
-  <script>
-    const toggleBtn = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    toggleBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  </script>
-
-  </script>
-</body>
-
-</html>
->>>>>>> 3be4108f9663987009b320ad7449d44d8b3f2eab

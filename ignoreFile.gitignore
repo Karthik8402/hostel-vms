@@ -1,0 +1,7 @@
+.git/
+.github/
+*.log
+node_modules/
+build/
+dist/
+.DS_Store
