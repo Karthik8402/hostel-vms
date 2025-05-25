@@ -222,62 +222,126 @@
         const generatedVisitorID = visitorID++;
         localStorage.setItem('visitorID', visitorID); // Store updated ID in localStorage
 
+        const qrText = `Visitor ID: ${generatedVisitorID}\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nPurpose: ${purpose}\nDate & Time: ${dateTime}`;
+
         // Open new print window
         const printWindow = window.open('', '_blank');
         const html = `
-      <html>
-      <head>
-        <title>Visitor Details</title>
-        <style>
-          body {
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f8fafc;
+<html>
+<head>
+  <title>Visitor Details</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8fafc;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .btn-print {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      width: 100%;
+      max-width: 200px;
+    }
+    .qr-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    #qrcode {
+      display: block;
+      width: 150px;
+      height: 150px;
+    }
+    .visitor-info {
+      width: 100%;
+      padding-left: 15px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .visitor-info p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="${photoDataURL}" class="photo" alt="Visitor Photo" />
+    <h2>Visitor ID: ${generatedVisitorID}</h2>
+    <h2>${fullName}</h2>
+    
+    <div class="visitor-info">
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Purpose:</strong> ${purpose}</p>
+      <p><strong>Date & Time:</strong> ${dateTime}</p>
+    </div>
+    
+    <div class="qr-container">
+      <canvas id="qrcode"></canvas>
+    </div>
+    
+    <button class="btn-print" onclick="window.print()">Print</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"><\/script>
+  <script>
+    (function() {
+      // Create QR code after everything is loaded
+      window.onload = function() {
+        const qrText = \`${qrText.replace(/`/g, '\\`')}\`;
+        const canvas = document.getElementById('qrcode');
+        
+        QRCode.toCanvas(canvas, qrText, {
+          width: 150,
+          margin: 1,
+          color: {
+            dark: '#000000',  // Black dots
+            light: '#ffffff' // White background
           }
-          .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
+        }, function(error) {
+          if (error) {
+            console.error('QR Code generation error:', error);
+            // Fallback: Display text if QR fails
+            document.querySelector('.qr-container').innerHTML = '<p>QR Code Error: ' + qrText + '</p>';
           }
-          .photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-          }
-          .btn-print {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="card">
-          <img src="${photoDataURL}" class="photo" alt="Visitor Photo" />
-          <h2>Visitor ID: ${generatedVisitorID}</h2>
-          <h2>${fullName}</h2>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Purpose:</strong> ${purpose}</p>
-          <p><strong>Date & Time:</strong> ${dateTime}</p>
-          <button class="btn-print" onclick="window.print()">Print</button>
-        </div>
-      </body>
-      </html>
-    `;
+        });
+      };
+    })();
+  <\/script>
+</body>
+</html>
+`;
 
         printWindow.document.write(html);
         printWindow.document.close();
@@ -309,7 +373,7 @@
       document.getElementById('registrationForm').reset();
       generateCaptcha(); // Refresh CAPTCHA after submission
     });
-
   </script>
 </body>
+
 </html>
