@@ -149,3 +149,159 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warden Login - Hostel VMS</title>
+
+  <!-- Tailwind CSS -->
+  <script src="libs/tailwind.js"></script>
+
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="libs/sweetalert2.min.css">
+  <script src="libs/sweetalert2.all.min.js"></script>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="libs/aos/aos.css">
+  <script src="libs/aos/aos.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center" data-aos="fade-left" data-aos-delay="100">
+          <a href="index.html" class="text-xl font-bold text-blue-600 hover:text-blue-800 transition">
+            🏨 Hostel VMS
+          </a>
+        </div>
+
+        <!-- Hamburger for mobile -->
+        <div class="md:hidden">
+          <button id="menuToggle" class="text-gray-700 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-3 text-sm font-medium items-center transition-all duration-300 ease-in-out">
+          <li data-aos="fade-right" data-aos-delay="100"><a href="index.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition">Home</a></li>
+          <li data-aos="fade-right" data-aos-delay="200"><a href="rules.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition">Rules</a></li>
+          <li data-aos="fade-right" data-aos-delay="300"><a href="login.html"
+              class="block px-4 py-2 bg-blue-600 text-white rounded-full font-bold shadow">Warden
+              Login</a></li>
+          <li data-aos="fade-right" data-aos-delay="400"><a href="add-visitor.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition">Add Visitor</a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="500"><a href="log.html"
+              class="px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full transition">Visitor Log</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile Menu -->
+      <ul id="mobileMenu" class="md:hidden hidden flex-col space-y-2 pb-4 text-sm font-medium">
+        <li data-aos="fade-right" data-aos-delay="100"><a href="index.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Home</a></li>
+        <li data-aos="fade-right" data-aos-delay="200"><a href="rules.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Rules</a></li>
+        <li data-aos="fade-right" data-aos-delay="300"><a href="login.html"
+            class="block px-4 py-2 bg-blue-600 text-white rounded-full font-bold shadow">Warden Login</a></li>
+        <li data-aos="fade-right" data-aos-delay="400"><a href="add-visitor.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Add Visitor</a></li>
+        <li data-aos="fade-right" data-aos-delay="500"><a href="log.html"
+            class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full">Visitor Log</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Login Box -->
+  <main class="flex-grow flex justify-center items-center px-4 pt-24">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm" data-aos="zoom-in">
+      <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Warden Login</h2>
+
+      <form id="loginForm">
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+          <label for="username" class="block text-gray-700">Username</label>
+          <input type="text" id="username" class="w-full border px-3 py-2 rounded" placeholder="Enter username"
+            required>
+        </div>
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+          <label for="password" class="block text-gray-700">Password</label>
+          <input type="password" id="password" class="w-full border px-3 py-2 rounded" placeholder="Enter password"
+            required>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          data-aos="fade-up" data-aos-delay="300">Login</button>
+      </form>
+
+      <div id="loginResult" class="mt-4 text-center text-sm"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-10 py-4 text-center text-sm text-gray-500">
+    © 2025 Hostel Visitor Management System. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // AOS Initialization
+    AOS.init();
+  
+    // Mobile menu toggle
+    const toggleBtn = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  
+    // Login form handling
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+  
+      if (username === 'warden' && password === 'warden@123') {
+        const now = new Date().getTime();
+        localStorage.setItem("wardenLoggedIn", "true");
+        localStorage.setItem("loginTime", now); // Save login time
+  
+        document.getElementById('loginResult').innerHTML =
+          '<p class="text-green-600 font-semibold">Login successful! Redirecting...</p>';
+  
+        setTimeout(() => {
+          window.location.href = 'log.html';
+        }, 1000);
+      } else {
+        document.getElementById('loginResult').innerHTML =
+          '<p class="text-red-600 font-semibold">Invalid username or password</p>';
+      }
+    });
+  </script>
+  
+
+</body>
+
+</html>
+>>>>>>> 3be4108f9663987009b320ad7449d44d8b3f2eab
